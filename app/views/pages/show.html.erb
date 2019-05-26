@@ -1,0 +1,15 @@
+<% if logged_in? %>
+  <h1>こんにちは、<%=  current_user.user_name %>さん</h1>
+  <p>ユーザー用ページです。</p>
+  <p>テストツイート</p>
+
+  <%= form_with(model: Tweet.new(user_id: current_user.id)) do |f| %>
+    <%= f.hidden_field :user_id %>
+    <%= f.text_area :text %>
+    a
+    <%= f.submit %>
+    b
+  <% end %>
+<% else %>
+  <p>ログインしてください</p>
+<% end %>

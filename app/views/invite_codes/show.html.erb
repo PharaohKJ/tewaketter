@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Config:</strong>
+  <%= @invite_code.config %>
+</p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @invite_code.code %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @invite_code.start %>
+</p>
+
+<p>
+  <strong>Finish:</strong>
+  <%= @invite_code.finish %>
+</p>
+
+<%= link_to 'Edit', edit_invite_code_path(@invite_code) %> |
+<%= link_to 'Back', invite_codes_path %>

@@ -1,0 +1,29 @@
+<h1>手分けったー / Tewaketter</h1>
+
+<h2>手分けされるアカウントの登録</h2>
+
+<% if logged_in? %>
+  <p>
+  現在、手分けされるアカウントでログインしており、管理者モードです。
+  </p>
+  <p>
+    <%= image_tag(current_user.image_url) %>
+    <%= current_user.user_name %>
+    → <%= link_to '手分け設定', edit_config_path(Config.find(current_user.id)) %>
+  </p>
+  <p><%= link_to 'ログアウトする', '/signout' %></p>
+<% else %>
+  <p>まず「手分けされるアカウント」(例えばイベント用とか会社の代表アカウント)でログインしてください</p>
+  <p>
+    招待コードを発行し、受け取ったみんなで手分けしてツイートすることができます。
+  </p>
+  <p><%= link_to 'Twitter Login', '/auth/twitter' %></p>
+<% end %>
+
+<h2>招待コードを入力して手伝う</h2>
+<%= form_with url: invite_path  do |f| %>
+  <%= f.text_field :code, placeholder: '招待コードを貼り付けてください' %>
+  <%= f.submit '手伝う' %>
+<% end %>
+<p>Find me in app/views/pages/index.html.erb</p>
+<%= link_to 'User Page', '/pages/show' %>

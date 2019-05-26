@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Invite Codes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Config</th>
+      <th>Code</th>
+      <th>Start</th>
+      <th>Finish</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @invite_codes.each do |invite_code| %>
+      <tr>
+        <td><%= invite_code.config %></td>
+        <td><%= invite_code.code %></td>
+        <td><%= invite_code.start %></td>
+        <td><%= invite_code.finish %></td>
+        <td><%= link_to 'Show', invite_code %></td>
+        <td><%= link_to 'Edit', edit_invite_code_path(invite_code) %></td>
+        <td><%= link_to 'Destroy', invite_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Invite Code', new_invite_code_path %>

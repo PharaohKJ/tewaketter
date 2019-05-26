@@ -1,0 +1,50 @@
+<%= form_with(model: config, local: true) do |form| %>
+  <% if config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(config.errors.count, "error") %> prohibited this config from being saved:</h2>
+
+      <ul>
+      <% config.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.hidden_field :id %>
+    <%= form.hidden_field :user_id %>
+  </div>
+
+  <%= form.fields_for :tag, config.tag || config.build_tag do |tf| %>
+    <h2>ハッシュタグ(スペース区切りで複数可能)</h2>
+    <div class="field">
+      <%= tf.hidden_field :id %>
+      <%= tf.text_field :name, placeholder: '#tewaketter #eventname' %>
+    </div>
+  <% end %>
+  <%= form.fields_for :invite_code, config.invite_code || config.build_invite_code.set_default do |tf| %>
+    <h2>招待コード</h2>
+    <div class="field">
+      <%= tf.hidden_field :id %>
+      <%= tf.text_field :code, readonly: 'readyonly' %><br>
+      <a>削除して無効にする</a><br>
+      <% if config.invite_code.persisted? %>
+      <% else %>
+        ※まだ保存されていないので招待は有効になっていません！
+      <% end %>
+    </div>
+    <h3>招待コード有効開始日</h3>
+    <div>
+      <%= tf.date_field :start %>
+    </div>
+    <h3>招待コード有効終了日</h3>
+    (1日だけ有効にしたい場合、有効開始日と同じ日を指定してください)
+    <div class="field">
+      <%= tf.date_field :finish %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= form.submit '保存' %>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tweets</h1>
+
+ツイート済みは表示されていません
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>作成日時</th>
+      <th>作った人</th>
+      <th>内容</th>
+      <th>写真</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tweets.each do |tweet| %>
+      <tr>
+        <td><%= l(tweet.created_at, format: :check) %></td>
+        <td><%= tweet.uuid || '不明' %></td>
+        <td><%= tweet.text %></td>
+        <td>
+          <% tweet.images.each do |i| %>
+            <%= image_tag url_for(i), width: '640' %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: '削除します' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if @tweets.present? %>
+  <%= link_to '全てツイートOK', tweets_all_tweets_path(user_id: current_user.id, to_id: @tweets.last.id), method: :post %>
+<% end %>
+<br>
+
+<%= link_to 'New Tweet', new_tweet_path %>
