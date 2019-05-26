@@ -5,7 +5,7 @@ class Tag < ApplicationRecord
 
   def normalize
     self.name = name.split(' ')
-                    .map { |r| "##{r}" if r[0] != '#'}
+                    .map { |r| r[0] == '#' ? r : "##{r}"}
                     .join(' ')
     self
   end
