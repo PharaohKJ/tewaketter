@@ -27,3 +27,19 @@
 <% end %>
 <p>Find me in app/views/pages/index.html.erb</p>
 <%= link_to 'User Page', '/pages/show' %>
+
+<h2>テンプレートでtwitterを開く</h2>
+
+<div class="twitter">
+  <a href="//twitter.com/share"
+     class="twitter-share-button"
+     data-text="ここにTweetしたときにデフォルトでいれておきたい文字列を入れる"
+     data-lang="ja">
+  Tweet
+  </a>
+  <%= tweet_link 'LABEL', '内容' %>
+  <%= tweet_link_simple 'LABEL', '内容' %>
+</div>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

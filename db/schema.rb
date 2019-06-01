@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_003103) do
+ActiveRecord::Schema.define(version: 2019_05_28_162901) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -71,6 +71,13 @@ ActiveRecord::Schema.define(version: 2019_05_26_003103) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["config_id"], name: "index_tags_on_config_id"
+  end
+
+  create_table "templates", force: :cascade do |t|
+    t.string "name"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tweets", force: :cascade do |t|

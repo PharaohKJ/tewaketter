@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :templates
   # resources :invite_codes
   # resources :tags
   resources :configs
