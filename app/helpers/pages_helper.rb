@@ -13,7 +13,7 @@ module PagesHelper
   def tweet_link_simple(label, text)
     link_to(
       label,
-      'https://twitter.com/intent/tweet?' + {text: text}.to_query
+      'https://twitter.com/intent/tweet?' + {text: text + ' #civictechjp'}.to_query
     )
   end
 end
