@@ -10,6 +10,9 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.json
   def show
+    if params.has_key?(:keyword)
+      @templates = @tag.templates.where('text LIKE ?', "%#{params[:keyword]}%")
+    end
   end
 
   # GET /tags/new

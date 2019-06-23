@@ -1,5 +1,6 @@
 class Tag < ApplicationRecord
-  belongs_to :config
+  belongs_to :config, optional: true
+  has_and_belongs_to_many :templates, dependent: :destroy
 
   before_save :normalize
 

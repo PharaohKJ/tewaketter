@@ -1,44 +1,36 @@
-<h1>手分けったー / Tewaketter</h1>
+<div class="row">
+  <h2>テンプレートでtwitterを開く支援ツール</h2>
+</div>
+<div class="row">
+  <% Tag.all.each do |t| %>
+    <div class="col-sm rounded-pill border border-primary m-1 text-center"><%= link_to t.name, tag_path(t) %></div>
+  <% end %>
+</div>
 
-<h2>手分けされるアカウントの登録</h2>
+<div class="row">
+  <h2>手分けされるアカウントの登録</h2>
+  <% if logged_in? %>
+    <p>
+      現在、手分けされるアカウントでログインしており、管理者モードです。
+    </p>
+    <p>
+      <%= image_tag(current_user.image_url) %>
+      <%= current_user.user_name %>
+      → <%= link_to '手分け設定', edit_config_path(Config.find(current_user.id)) %>
+    </p>
+    <p><%= link_to 'ログアウトする', '/signout' %></p>
+  <% else %>
+    <p>まず「手分けされるアカウント」(例えばイベント用とか会社の代表アカウント)でログインしてください</p>
+    <p>
+      招待コードを発行し、受け取ったみんなで手分けしてツイートすることができます。
+    </p>
+    <p><%= link_to 'Twitter Login', '/auth/twitter' %></p>
+  <% end %>
 
-<% if logged_in? %>
-  <p>
-  現在、手分けされるアカウントでログインしており、管理者モードです。
-  </p>
-  <p>
-    <%= image_tag(current_user.image_url) %>
-    <%= current_user.user_name %>
-    → <%= link_to '手分け設定', edit_config_path(Config.find(current_user.id)) %>
-  </p>
-  <p><%= link_to 'ログアウトする', '/signout' %></p>
-<% else %>
-  <p>まず「手分けされるアカウント」(例えばイベント用とか会社の代表アカウント)でログインしてください</p>
-  <p>
-    招待コードを発行し、受け取ったみんなで手分けしてツイートすることができます。
-  </p>
-  <p><%= link_to 'Twitter Login', '/auth/twitter' %></p>
-<% end %>
+</div>
 
 <h2>招待コードを入力して手伝う</h2>
-<%= form_with url: invite_path  do |f| %>
+<%= form_with url: invite_path do |f| %>
   <%= f.text_field :code, placeholder: '招待コードを貼り付けてください' %>
   <%= f.submit '手伝う' %>
 <% end %>
-<p>Find me in app/views/pages/index.html.erb</p>
-<%= link_to 'User Page', '/pages/show' %>
-
-<h2>テンプレートでtwitterを開く</h2>
-
-<div class="twitter">
-  <li><%= tweet_link_simple '黒井 理恵', '黒井 理恵 北海道名寄市の新しい取り組み、スポーツ×ヘルスケア×データに向けての動きのご紹介' %></li>
-  <li><%= tweet_link_simple '上坂 哲教','上坂 哲教 ITの人として参加したまちづくりとシビックテック＠福井県永平寺町～見せた数字、取り組んだこと、そして課題～' %></li>
-  <li><%= tweet_link_simple '斎藤 百合恵','斎藤 百合恵 よそものとしての地域参加のありかた〜社会人の地域活動サークル YAPの活動に寄せて' %></li>
-  <li><%= tweet_link_simple '青島 英和', '青島 英和 秘境駅から見える、街の移り変わり' %></li>
-  <li><%= tweet_link_simple '杉本 直也', '杉本 直也 そういえば「富岳3776景」ってあったよね？' %></li>
-  <li><%= tweet_link_simple '加藤 真透', '加藤 真透 俺 と 2017年度 Code for Kanazawa Civic Hack Night 運営' %></li>
-  <li><%= tweet_link_simple '五十嵐 康伸', '五十嵐 康伸 プロダクトをリリースしてグロースさせるシビックテックのチームビルディング ～データビジュアライゼーション集団 E2D3 の運営上の工夫～' %></li>
-  <li><%= tweet_link_simple '古郡 唯希', '古郡 唯希 CODE for アーカイブのすゝめ' %></li>
-  <li><%= tweet_link_simple '江波 龍一', '江波 龍一 Code for Japanの活動を通して見えてきた関係人口の最新課題と盛り上げるための秘訣' %></li>
-</div>
-

@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Config:</strong>
-  <%= @tag.config %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @tag.name %>
-</p>
-
-<%= link_to 'Edit', edit_tag_path(@tag) %> |
-<%= link_to 'Back', tags_path %>
+<%= form_with method: :get, url: tag_path(@tag), local: true do |f| %>
+  <div class="form-row align-items-center m-2">
+    <div class="col-8"><%= f.text_field :keyword, value: params[:keyword], class: 'form-control' %></div>
+    <div class="col-4"><%= f.submit '絞り込む', class: "btn btn-primary" %></div>
+  </div>
+<% end %>
+  <% (@templates || @tag.templates).each_with_index do |t, i| %>
+    <div class="row m-2">
+      <div class="col-4"><%= tweet_link_simple "#{i} - #{t.name}", t.text %></div>
+      <div class="col-8"><%= t.text %></div>
+    </div>
+  <% end %>

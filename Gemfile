@@ -75,3 +75,5 @@ gem 'delayed_job_active_record'
 gem "aws-sdk-s3", require: false
 
 gem 'twitter_api'
+
+gem 'bootstrap', '~> 4.3.1'
