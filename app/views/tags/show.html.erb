@@ -4,9 +4,23 @@
     <div class="col-4"><%= f.submit '絞り込む', class: "btn btn-primary" %></div>
   </div>
 <% end %>
-  <% (@templates || @tag.templates).each_with_index do |t, i| %>
-    <div class="row m-2">
-      <div class="col-4"><%= tweet_link_simple "#{i} - #{t.name}", t.text %></div>
-      <div class="col-8"><%= t.text %></div>
+<% (@templates || @tag.templates).each_with_index do |t, i| %>
+  <% css_klass = %w(row my-2 py-2 border) %>
+  <% css_klass = i%2 == 0 ? css_klass : css_klass << 'table-active'  %>
+  <%= content_tag :div, class: css_klass do %>
+    <div class="col-4"><%= tweet_link_simple "#{i} - #{t.name}", t.text %></div>
+    <div class="col-6">
+      <%= content_tag :div, id: "text-#{i}" do %>
+      <%= t.text %>
+      <% end %>
+    </div>
+    <div class="col-2">
+      <div class="row">
+        <%= tweet_link_simple 'tで開く', t.text, { class: 'btn btn-primary btn-sm' } %>
+      </div>
+      <div class="row">
+        <%= link_to 'クリップ', 'javascript:void(0);', onclick: "clipboard('text-#{i}')", class: 'btn btn-secondary btn-sm mt-4' %>
+      </div>
     </div>
   <% end %>
+<% end %>

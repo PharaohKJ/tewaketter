@@ -10,10 +10,11 @@ module PagesHelper
   end
 
   # https://twitter.com/intent/tweet?url=http://wemo.tech&text=あああ
-  def tweet_link_simple(label, text)
+  def tweet_link_simple(label, text, css = {})
     link_to(
       label,
-      'https://twitter.com/intent/tweet?' + {text: text}.to_query
+      'https://twitter.com/intent/tweet?' + {text: text}.to_query,
+      css
     )
   end
 end
