@@ -59,6 +59,7 @@ end
 theme = 'カフェ｜コミュニティとシビックテック'
 tag   = Tag.find_by(name: '#civictechjp #ctfc')
 [
+  '',
   '富永哲欣さん 小平あたりでCivicTechをはじめて',
   '澤田学さん みんなでつくる"ゆきみらい"雪に特化したシビックテックコミュニティを立ち上げました',
   '白澤美幸さん "ちばをその気にさせてみた！？ ご当地版シビックテックアライアンスでできること"',
@@ -75,6 +76,7 @@ end
 theme = '文楽｜GovTech・公共とシビックテック'
 tag   = Tag.find_by(name: '#civictechjp #ctfb')
 [
+  '',
   '酒井一樹さん(@kazukisakai) METI DXの、今までとこれから',
   '新庄大輔さん 大型イベントデータのオープン化',
   '渡邊亮輔さん(@watambo) 行政をハックし行政データをオープンにしてみようとした結果',
@@ -91,6 +93,7 @@ end
 theme = 'カフェ｜シビックテック観'
 tag   = Tag.find_by(name: '#civictechjp #ctfc')
 [
+  '',
   '関治之さん 「ともにつくる」ことで信頼を築こう',
   '友金良太さん(@TOMOKIN_VOICE) YouTuber×AIエンジニアのパラレルキャリアを活かした私のシビックテック',
   '鈴木まなみさん(@rin2tree) 発信することでつながる世界',
@@ -107,6 +110,7 @@ end
 theme = '文楽｜シビックテックとプロダクト'
 tag   = Tag.find_by(name: '#civictechjp #ctfb')
 [
+  '',
   '今村かずきさん(@kaizumaki) “信頼”のプラットフォームをめざして ～CatBot α版とその未来～',
   'ふぁらお加藤さん(@PharaohKJ) 俺とha4goとCTAC',
   '菅原洋介さん(@yows1031) 石巻バリアフリーマップ',
