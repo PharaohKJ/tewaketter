@@ -1,3 +1,4 @@
+# coding: utf-8
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -25,7 +26,7 @@ tag   = Tag.find_by(name: '#civictechjp #ctfc')
 [
   '',
   '友次進さん シニアとスマホのステキな関係2',
-  '島野勝弘さん 田舎でやってみた！大人向けICT講座と親子プログラミング教室',
+  '島野勝弘さん(@kshimano) 田舎でやってみた！大人向けICT講座と親子プログラミング教室',
   '雪下海香さん 現代の労働課題 コールセンター業界の発展のために',
   '白松俊さん 市民が人工知能研究者とコラボする場を提供します！',
   '山田英二さん 琵琶湖畔から始まる市民活動の和・輪・環 個々の市民活動が繋がり',
@@ -42,8 +43,8 @@ theme = '文楽｜ソーシャルビジネス'
 tag   = Tag.find_by(name: '#civictechjp #ctfb')
 [
   '',
-  '井上貢さん シビックパワーバトル・ワークショップ編',
-  '廣田達宣さん 10人の声で政策を動かそう！スマホで出来るロビイング講座 by issues',
+  '井上貢さん(@civic_p_battle) シビックパワーバトル・ワークショップ編',
+  '廣田達宣(@TatsunoriHirota)さん 10人の声で政策を動かそう！スマホで出来るロビイング講座 by issues',
   '横張寿希さん 子育てを一人にしない！Line botでつなぐ子育ての輪！！',
   '山田洋志さん 不審者・治安情報サービス「ガッコム安全ナビ」の取組 ～地域で見守る社会を目指して～',
   '小俣博司さん 身近に感じて考えるオープンデータの利活用方法',
@@ -74,9 +75,9 @@ end
 theme = '文楽｜GovTech・公共とシビックテック'
 tag   = Tag.find_by(name: '#civictechjp #ctfb')
 [
-  '酒井一樹さん METI DXの、今までとこれから',
+  '酒井一樹さん(@kazukisakai) METI DXの、今までとこれから',
   '新庄大輔さん 大型イベントデータのオープン化',
-  '渡邊亮輔さん 行政をハックし行政データをオープンにしてみようとした結果',
+  '渡邊亮輔さん(@watambo) 行政をハックし行政データをオープンにしてみようとした結果',
   '及川涼介さん 行政を内側からハックする！mokubaの試行錯誤',
   '羽鳥健太郎さん 地域産業振興のためのシビックテック',
   '相川梓さん 中野区×子育て×TECH×リアル',
@@ -91,13 +92,13 @@ theme = 'カフェ｜シビックテック観'
 tag   = Tag.find_by(name: '#civictechjp #ctfc')
 [
   '関治之さん 「ともにつくる」ことで信頼を築こう',
-  '友金良太さん YouTuber×AIエンジニアのパラレルキャリアを活かした私のシビックテック',
-  '鈴木まなみさん 発信することでつながる世界',
+  '友金良太さん(@TOMOKIN_VOICE) YouTuber×AIエンジニアのパラレルキャリアを活かした私のシビックテック',
+  '鈴木まなみさん(@rin2tree) 発信することでつながる世界',
   'あまのさんさん フェアユースから考えるアメリカの社会哲学感について',
   '白川展之さん シビックテックとオープンサイエンス',
   '伊藤侑果さん ただの主婦が「IoT推進コーディネーター」になった話',
-  '福島健一郎さん シビックテックと持続可能性について',
-  '佐藤拓也さん 地域のシビックテックが目指す形とは',
+  '福島健一郎さん(@kenchif) シビックテックと持続可能性について',
+  '佐藤拓也さん(@takuya310_) 地域のシビックテックが目指す形とは',
 ].each do |name|
   text = "#{head(theme, tag.name)} #{name}"
   Template.find_or_create_by(name: name.split(' ')[0], text: text).tags << tag
@@ -106,9 +107,9 @@ end
 theme = '文楽｜シビックテックとプロダクト'
 tag   = Tag.find_by(name: '#civictechjp #ctfb')
 [
-  '今村かずきさん “信頼”のプラットフォームをめざして ～CatBot α版とその未来～',
-  'ふぁらお加藤さん 俺とha4goとCTAC',
-  '菅原洋介さん 石巻バリアフリーマップ',
+  '今村かずきさん(@kaizumaki) “信頼”のプラットフォームをめざして ～CatBot α版とその未来～',
+  'ふぁらお加藤さん(@PharaohKJ) 俺とha4goとCTAC',
+  '菅原洋介さん(@yows1031) 石巻バリアフリーマップ',
   '三浦耕生さん お手軽にRPA',
   '河中祥吾さん 学校給食献立オープンデータ標準化への取組',
   'ヨッシーさん アナログゲーム「シビックテッカーズ」',
