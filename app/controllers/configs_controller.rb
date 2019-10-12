@@ -64,6 +64,8 @@ class ConfigsController < ApplicationController
     params.require(:config).permit(
       :id,
       :user_id,
+      :use_buffer,
+      :buffer_token,
       tag_attributes: [:id, :name],
       invite_code_attributes: [:id, :start, :finish, :code]
     )

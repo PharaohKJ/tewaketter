@@ -77,3 +77,5 @@ gem "aws-sdk-s3", require: false
 gem 'twitter_api'
 
 gem 'bootstrap', '~> 4.3.1'
+
+gem 'buffer'

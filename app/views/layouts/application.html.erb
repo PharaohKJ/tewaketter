@@ -12,12 +12,6 @@
 
 <body>
 <header>
-  <% if flash[:notice] %>
-    <div class="notice">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-
   <nav class="navbar navbar-expand flex-column flex-md-row navbar-dark bg-dark">
     <%= link_to "tewaketter", "/", id: "logo", class: "navbar-brand" %>
     <ul class="navbar-nav ml-auto">
@@ -32,6 +26,11 @@
       <% end %>
     </ul>
   </nav>
+  <% if flash[:notice] %>
+    <div class="alert alert-info">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 </header>
 <div class="container">
   <%= yield %>

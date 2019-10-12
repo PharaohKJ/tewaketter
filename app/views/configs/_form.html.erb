@@ -1,6 +1,6 @@
 <%= form_with(model: config, local: true) do |form| %>
   <% if config.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(config.errors.count, "error") %> prohibited this config from being saved:</h2>
 
       <ul>
@@ -17,34 +17,49 @@
   </div>
 
   <%= form.fields_for :tag, config.tag || config.build_tag do |tf| %>
-    <h2>ハッシュタグ(スペース区切りで複数可能)</h2>
-    <div class="field">
+    <h2></h2>
+    <div class="form-group">
+      <%= tf.label :name, 'ハッシュタグ(スペース区切りで複数可能)' %>
       <%= tf.hidden_field :id %>
-      <%= tf.text_field :name, placeholder: '#tewaketter #eventname' %>
+      <%= tf.text_field :name, placeholder: '#tewaketter #eventname', class: 'form-control' %>
     </div>
   <% end %>
   <%= form.fields_for :invite_code, config.invite_code || config.build_invite_code.set_default do |tf| %>
-    <h2>招待コード</h2>
-    <div class="field">
+    <div class="form-group">
+      <%= tf.label :code, '招待コード' %>
       <%= tf.hidden_field :id %>
-      <%= tf.text_field :code, readonly: 'readyonly' %><br>
+      <%= tf.text_field :code, readonly: 'readyonly', class: 'form-control' %><br>
       <a>削除して無効にする</a><br>
       <% if config.invite_code.persisted? %>
       <% else %>
-        ※まだ保存されていないので招待は有効になっていません！
+        <small class="form-text text-danger">※まだ保存されていないので招待は有効になっていません！</small>
       <% end %>
     </div>
-    <h3>招待コード有効開始日</h3>
-    <div>
-      <%= tf.date_field :start %>
+    <div class="form-group">
+      <%= tf.label :start, '招待コード有効開始日' %>
+      <%= tf.date_field :start, class: 'form-control' %>
     </div>
-    <h3>招待コード有効終了日</h3>
-    (1日だけ有効にしたい場合、有効開始日と同じ日を指定してください)
     <div class="field">
-      <%= tf.date_field :finish %>
+      <%= tf.label :finish, '招待コード有効終了日' %>
+      <%= tf.date_field :finish, class: 'form-control' %>
+      <small class="form-text text-muted">
+        ( 1日だけ有効にしたい場合、有効開始日と同じ日を指定してください )
+      </small>
     </div>
   <% end %>
-  <div class="actions">
-    <%= form.submit '保存' %>
+
+  <div class="form-group form-check mt-2">
+    <%= form.check_box :use_buffer, class: 'form-check-input' %>
+    <%= form.label :user_buffer, 'twitter API ではなく Buffer API を使う', class: 'form-check-label' %>
+    <small class="form-text text-muted">
+      ( <a href="https://buffer.com" target="_blank">Buffer</a> とは各種SNSに時間を指定して同時投稿できるサービスです )
+    </small>
+    <div class="form-group">
+      <%= form.label :buffer_token, 'Buffer API トークン' %>
+      <%= form.text_area :buffer_token, class: 'form-control' %>
+    </div>
   </div>
+
+
+  <%= form.submit '保存', class: 'btn btn-primary' %>
 <% end %>
