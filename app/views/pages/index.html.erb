@@ -1,36 +1,41 @@
-<div class="row">
-  <h2>テンプレートでtwitterを開く支援ツール</h2>
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">tewaketter</h1>
+  <h2 class="display-5">SNS発信を手分けするツール集</h2>
+  <p class="lead"></p>
 </div>
+
+<h2>テンプレート文章の投稿</h2>
 <div class="row">
   <% Tag.all.each do |t| %>
     <div class="col-sm rounded-pill border border-primary m-1 text-center"><%= link_to t.name, tag_path(t) %></div>
   <% end %>
 </div>
 
-<div class="row">
-  <h2>手分けされるアカウントの登録</h2>
-  <% if logged_in? %>
-    <p>
-      現在、手分けされるアカウントでログインしており、管理者モードです。
-    </p>
-    <p>
-      <%= image_tag(current_user.image_url) %>
-      <%= current_user.user_name %>
-      → <%= link_to '手分け設定', edit_config_path(Config.find(current_user.id)) %>
-    </p>
-    <p><%= link_to 'ログアウトする', '/signout' %></p>
-  <% else %>
-    <p>まず「手分けされるアカウント」(例えばイベント用とか会社の代表アカウント)でログインしてください</p>
-    <p>
-      招待コードを発行し、受け取ったみんなで手分けしてツイートすることができます。
-    </p>
-    <p><%= link_to 'Twitter Login', '/auth/twitter' %></p>
-  <% end %>
-
-</div>
-
-<h2>招待コードを入力して手伝う</h2>
-<%= form_with url: invite_path do |f| %>
-  <%= f.text_field :code, placeholder: '招待コードを貼り付けてください' %>
-  <%= f.submit '手伝う' %>
+<h2 class="mt-4">手分けされるアカウントの登録</h2>
+<% if logged_in? %>
+  <p>
+    現在、手分けされるアカウント( <%= image_tag(current_user.image_url) %> <%= current_user.user_name %> )でログインしており、手分け設定を行うことができます。
+  </p>
+  <p>
+    <%= link_to '手分け設定', edit_config_path(Config.find(current_user.id)) %>
+  </p>
+  <p><%= link_to 'ログアウトする', '/signout' %></p>
+<% else %>
+  <p>まず「手分けされるアカウント」(例えばイベント用とか会社の代表アカウント)でログインしてください</p>
+  <p>
+    招待コードを発行し、受け取ったみんなで手分けしてツイートすることができます。
+  </p>
+  <p><%= link_to 'Twitter Login', '/auth/twitter' %></p>
 <% end %>
+
+<h2 class="mt-4">招待コードを入力して手伝う</h2>
+<p>ログインせずに招待コードを入力して、SNS発信を手伝うことのみ行う場合はこちら</p>
+<div>
+  <%= form_with url: invite_path do |f| %>
+    <div class="form-group">
+      <%= f.text_field :code, placeholder: '招待コードを貼り付けてください', class: 'form-control' %>
+    </div>
+    <%= f.submit '手伝う', class: 'btn btn-primary' %>
+  <% end %>
+</div>
